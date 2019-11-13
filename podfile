@@ -1,0 +1,7 @@
+platform :ios, '9.0'
+target 'RRAnalytics' do
+
+ pod 'UMCAnalytics', '~> 6.0.5'	
+
+    pod 'UMCCommonLog'
+end
