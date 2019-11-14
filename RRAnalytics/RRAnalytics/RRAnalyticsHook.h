@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RRAnalyticsHook : NSObject
 
++ (BOOL)isClassOfSystem:(id)cls;
+
 + (void)hookClass:(Class)cls originSelctor:(SEL)originSelector targetSelector:(SEL)swizzlingSelector;
 
 

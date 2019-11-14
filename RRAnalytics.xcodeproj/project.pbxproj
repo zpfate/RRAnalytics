@@ -9,15 +9,19 @@
 /* Begin PBXBuildFile section */
 		5BFC9805237BFBFD00717EA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9804237BFBFD00717EA2 /* AppDelegate.m */; };
 		5BFC9808237BFBFD00717EA2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9807237BFBFD00717EA2 /* SceneDelegate.m */; };
-		5BFC980B237BFBFD00717EA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC980A237BFBFD00717EA2 /* ViewController.m */; };
-		5BFC980E237BFBFD00717EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC980C237BFBFD00717EA2 /* Main.storyboard */; };
 		5BFC9810237BFBFF00717EA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC980F237BFBFF00717EA2 /* Assets.xcassets */; };
 		5BFC9813237BFBFF00717EA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC9811237BFBFF00717EA2 /* LaunchScreen.storyboard */; };
 		5BFC9816237BFBFF00717EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9815237BFBFF00717EA2 /* main.m */; };
 		5BFC981F237BFC2400717EA2 /* RRAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */; };
-		5BFC9825237BFEDF00717EA2 /* UIViewController+RRAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9824237BFEDF00717EA2 /* UIViewController+RRAnalytics.m */; };
 		5BFC9828237C002F00717EA2 /* RRAnalyticsHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9827237C002F00717EA2 /* RRAnalyticsHook.m */; };
 		5BFC982B237C280200717EA2 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC982A237C280100717EA2 /* SecondViewController.m */; };
+		5BFC9834237CE22200717EA2 /* RRAnalytics+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */; };
+		5BFC9837237D23DD00717EA2 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9836237D23DD00717EA2 /* FirstViewController.m */; };
+		5BFC983A237D275E00717EA2 /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9839237D275E00717EA2 /* ButtonViewController.m */; };
+		5BFC983D237D294D00717EA2 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC983C237D294D00717EA2 /* CollectionViewController.m */; };
+		5BFC9840237D2C1000717EA2 /* GestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC983F237D2C1000717EA2 /* GestureViewController.m */; };
+		5BFC9843237D2E7600717EA2 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9842237D2E7600717EA2 /* TableViewController.m */; };
+		5BFC9846237D31F400717EA2 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9845237D31F400717EA2 /* ListViewController.m */; };
 		B09CE9DA9DB47E3E78E29C4C /* libPods-RRAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BA0550DF50F1BBF7490048 /* libPods-RRAnalytics.a */; };
 /* End PBXBuildFile section */
 
@@ -29,21 +33,30 @@
 		5BFC9804237BFBFD00717EA2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BFC9806237BFBFD00717EA2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		5BFC9807237BFBFD00717EA2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		5BFC9809237BFBFD00717EA2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5BFC980A237BFBFD00717EA2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5BFC980D237BFBFD00717EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BFC980F237BFBFF00717EA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BFC9812237BFBFF00717EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BFC9814237BFBFF00717EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BFC9815237BFBFF00717EA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BFC981D237BFC2400717EA2 /* RRAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAnalyticsManager.h; sourceTree = "<group>"; };
 		5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAnalyticsManager.m; sourceTree = "<group>"; };
-		5BFC9823237BFEDF00717EA2 /* UIViewController+RRAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRAnalytics.h"; sourceTree = "<group>"; };
-		5BFC9824237BFEDF00717EA2 /* UIViewController+RRAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRAnalytics.m"; sourceTree = "<group>"; };
 		5BFC9826237C002F00717EA2 /* RRAnalyticsHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRAnalyticsHook.h; sourceTree = "<group>"; };
 		5BFC9827237C002F00717EA2 /* RRAnalyticsHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRAnalyticsHook.m; sourceTree = "<group>"; };
 		5BFC9829237C280100717EA2 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		5BFC982A237C280100717EA2 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		5BFC9832237CE22200717EA2 /* RRAnalytics+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RRAnalytics+Category.h"; sourceTree = "<group>"; };
+		5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RRAnalytics+Category.m"; sourceTree = "<group>"; };
+		5BFC9835237D23DD00717EA2 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		5BFC9836237D23DD00717EA2 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		5BFC9838237D275E00717EA2 /* ButtonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
+		5BFC9839237D275E00717EA2 /* ButtonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
+		5BFC983B237D294D00717EA2 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		5BFC983C237D294D00717EA2 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5BFC983E237D2C1000717EA2 /* GestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureViewController.h; sourceTree = "<group>"; };
+		5BFC983F237D2C1000717EA2 /* GestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureViewController.m; sourceTree = "<group>"; };
+		5BFC9841237D2E7600717EA2 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		5BFC9842237D2E7600717EA2 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		5BFC9844237D31F400717EA2 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		5BFC9845237D31F400717EA2 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		EFCE229250D6400BE1B13C87 /* Pods-RRAnalytics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RRAnalytics.release.xcconfig"; path = "Target Support Files/Pods-RRAnalytics/Pods-RRAnalytics.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,11 +98,20 @@
 				5BFC9804237BFBFD00717EA2 /* AppDelegate.m */,
 				5BFC9806237BFBFD00717EA2 /* SceneDelegate.h */,
 				5BFC9807237BFBFD00717EA2 /* SceneDelegate.m */,
-				5BFC9809237BFBFD00717EA2 /* ViewController.h */,
-				5BFC980A237BFBFD00717EA2 /* ViewController.m */,
+				5BFC9835237D23DD00717EA2 /* FirstViewController.h */,
+				5BFC9836237D23DD00717EA2 /* FirstViewController.m */,
+				5BFC9838237D275E00717EA2 /* ButtonViewController.h */,
+				5BFC9839237D275E00717EA2 /* ButtonViewController.m */,
+				5BFC983E237D2C1000717EA2 /* GestureViewController.h */,
+				5BFC983F237D2C1000717EA2 /* GestureViewController.m */,
+				5BFC9841237D2E7600717EA2 /* TableViewController.h */,
+				5BFC9842237D2E7600717EA2 /* TableViewController.m */,
+				5BFC983B237D294D00717EA2 /* CollectionViewController.h */,
+				5BFC983C237D294D00717EA2 /* CollectionViewController.m */,
+				5BFC9844237D31F400717EA2 /* ListViewController.h */,
+				5BFC9845237D31F400717EA2 /* ListViewController.m */,
 				5BFC9829237C280100717EA2 /* SecondViewController.h */,
 				5BFC982A237C280100717EA2 /* SecondViewController.m */,
-				5BFC980C237BFBFD00717EA2 /* Main.storyboard */,
 				5BFC980F237BFBFF00717EA2 /* Assets.xcassets */,
 				5BFC9811237BFBFF00717EA2 /* LaunchScreen.storyboard */,
 				5BFC9814237BFBFF00717EA2 /* Info.plist */,
@@ -103,10 +125,10 @@
 			children = (
 				5BFC981D237BFC2400717EA2 /* RRAnalyticsManager.h */,
 				5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */,
+				5BFC9832237CE22200717EA2 /* RRAnalytics+Category.h */,
+				5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */,
 				5BFC9826237C002F00717EA2 /* RRAnalyticsHook.h */,
 				5BFC9827237C002F00717EA2 /* RRAnalyticsHook.m */,
-				5BFC9823237BFEDF00717EA2 /* UIViewController+RRAnalytics.h */,
-				5BFC9824237BFEDF00717EA2 /* UIViewController+RRAnalytics.m */,
 			);
 			path = RRAnalytics;
 			sourceTree = "<group>";
@@ -189,7 +211,6 @@
 			files = (
 				5BFC9813237BFBFF00717EA2 /* LaunchScreen.storyboard in Resources */,
 				5BFC9810237BFBFF00717EA2 /* Assets.xcassets in Resources */,
-				5BFC980E237BFBFD00717EA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,28 +263,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFC980B237BFBFD00717EA2 /* ViewController.m in Sources */,
 				5BFC981F237BFC2400717EA2 /* RRAnalyticsManager.m in Sources */,
+				5BFC9840237D2C1000717EA2 /* GestureViewController.m in Sources */,
+				5BFC9834237CE22200717EA2 /* RRAnalytics+Category.m in Sources */,
 				5BFC9805237BFBFD00717EA2 /* AppDelegate.m in Sources */,
 				5BFC9828237C002F00717EA2 /* RRAnalyticsHook.m in Sources */,
+				5BFC983A237D275E00717EA2 /* ButtonViewController.m in Sources */,
 				5BFC982B237C280200717EA2 /* SecondViewController.m in Sources */,
-				5BFC9825237BFEDF00717EA2 /* UIViewController+RRAnalytics.m in Sources */,
+				5BFC9843237D2E7600717EA2 /* TableViewController.m in Sources */,
 				5BFC9816237BFBFF00717EA2 /* main.m in Sources */,
 				5BFC9808237BFBFD00717EA2 /* SceneDelegate.m in Sources */,
+				5BFC9846237D31F400717EA2 /* ListViewController.m in Sources */,
+				5BFC983D237D294D00717EA2 /* CollectionViewController.m in Sources */,
+				5BFC9837237D23DD00717EA2 /* FirstViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5BFC980C237BFBFD00717EA2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BFC980D237BFBFD00717EA2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5BFC9811237BFBFF00717EA2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -1,5 +1,5 @@
 #import "SceneDelegate.h"
-
+#include "FirstViewController.h"
 #import <UMCommon/UMCommon.h>
 
 #import <UMAnalytics/MobClick.h>
@@ -17,13 +17,26 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
-    [UMConfigure initWithAppkey:@"5dcbc6ef4ca357936e0001ce" channel:@"Debug"];
+//    [UMConfigure initWithAppkey:@"5dcbc6ef4ca357936e0001ce" channel:@"Debug"];
+//
+//    [UMConfigure setLogEnabled:YES];
+//
+//    [MobClick setScenarioType:E_UM_NORMAL];
+//
+//    [UMCommonLogManager setUpUMCommonLogManager];
+    
+     
+    UIWindowScene *windowScene = (UIWindowScene *)scene;
+    self.window = [[UIWindow alloc] initWithWindowScene:windowScene ];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    self.window.frame = windowScene.coordinateSpace.bounds;
 
-    [UMConfigure setLogEnabled:YES];
+    FirstViewController *vc = [FirstViewController new];
+    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = naVC;
     
-    [MobClick setScenarioType:E_UM_NORMAL];
     
-    [UMCommonLogManager setUpUMCommonLogManager];
     
 }
 

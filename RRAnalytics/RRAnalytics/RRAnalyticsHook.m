@@ -11,9 +11,17 @@
 #import <objc/runtime.h>
 @implementation RRAnalyticsHook
 
++ (BOOL)isClassOfSystem:(id)cls {
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[cls class]];
+    if (bundle == NSBundle.mainBundle) {
+        return NO;
+    }
+    return YES;
+
+}
 + (void)hookClass:(Class)cls originSelctor:(SEL)originSelector targetSelector:(SEL)swizzlingSelector {
     
-
     Method orginMethod = class_getInstanceMethod(cls, originSelector);
     Method swizzlingMethod = class_getInstanceMethod(cls, swizzlingSelector);
     
@@ -25,7 +33,6 @@
     } else {
         method_exchangeImplementations(orginMethod, swizzlingMethod);
     }
-    
 }
 
 @end
