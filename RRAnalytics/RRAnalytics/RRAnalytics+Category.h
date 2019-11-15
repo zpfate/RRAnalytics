@@ -22,12 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface UIGestureRecognizer (RRAnalytics)
 
-@property (nonatomic, copy) NSString *className;
-@property (nonatomic, copy) NSString *actionName;
-
-@end
 
 
 NS_ASSUME_NONNULL_END

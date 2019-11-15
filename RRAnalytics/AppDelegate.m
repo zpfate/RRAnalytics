@@ -20,11 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(send)];
-    
-    NSLog(@"%@", tap.className);
-    tap.className = @"123";
-    NSLog(@"%@", tap.className);
+  
     
 
 

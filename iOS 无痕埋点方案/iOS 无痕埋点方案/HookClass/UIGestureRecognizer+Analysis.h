@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIGestureRecognizer (Analysis)
-
+@property (nonatomic, copy) NSString *methodName;
 @end

@@ -67,6 +67,12 @@
 
 @end
 
+@interface UIGestureRecognizer (RRAnalytics)
+
+@property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *actionName;
+
+@end
 
 @implementation UIGestureRecognizer (RRAnalytics)
 
@@ -78,7 +84,6 @@
         SEL initAction = @selector(initWithTarget:action:);
         SEL swizzlingInitAction = @selector(swizzling_initWithTarget:action:);
         [RRAnalyticsHook hookClass:[self class] originSelctor:initAction targetSelector:swizzlingInitAction];
-        
     });
 }
 
@@ -106,29 +111,46 @@
     }
     
     // 再hook action
-    NSString *selectorStr = NSStringFromSelector(action);
+    NSString *actionStr = NSStringFromSelector(action);
     
-    // 在当前target中新建一个方法
-    NSString *swizzling_selectorStr = [NSString stringWithFormat:@"swizzling_%@",selectorStr];
+    // 新建一个swizzling_selector方法
+    NSString *swizzling_selectorStr = [NSString stringWithFormat:@"swizzling_%@",actionStr];
     SEL swizzlingSelector = NSSelectorFromString(swizzling_selectorStr);
     
+    // 获取swizzling_action
     SEL swizzling_action = @selector(swizzling_action:);
     Method swizzling_actionMethod = class_getInstanceMethod([self class], swizzling_action);
     
+    // 给target添加swizzling_selector方法, 实现为swizzling_action
     if (class_addMethod([target class], swizzlingSelector, method_getImplementation(swizzling_actionMethod), method_getTypeEncoding(swizzling_actionMethod))) {
         
         [RRAnalyticsHook hookClass:[target class] originSelctor:action targetSelector:swizzlingSelector];
     }
     
     self.className = NSStringFromClass([target class]);
-    self.actionName = selectorStr;
+    self.actionName = actionStr;
     return gesture;
 }
 
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
     
     NSLog(@"当前Class:%@, 当前Action:%@", ges.className, ges.actionName);
+    
+    // 调用原方法
+    SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
+    if ([self respondsToSelector:swizzling_selector]) {
+        IMP imp = [self methodForSelector:swizzling_selector];
+        void (*func)(id, SEL,id) = (void *)imp;
+        func(self, swizzling_selector, ges);
+    }
+    NSLog(@"%@", NSStringFromClass([self class]));
 }
+
+@end
+
+@interface UITableView (RRAnalytics)
+
+@property (nonatomic, copy) NSString *className;
 
 @end
 
