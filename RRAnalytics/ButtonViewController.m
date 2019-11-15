@@ -39,6 +39,7 @@
 - (void)buttonName:(UIButton *)sender {
     
     NSLog(@"click button ------------ buttonName");
+
 }
 
 

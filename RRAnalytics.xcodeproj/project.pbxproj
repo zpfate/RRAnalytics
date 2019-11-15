@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BC49BE2237E58D90092DE3E /* UmengAnalytics.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BC49BE1237E58D90092DE3E /* UmengAnalytics.json */; };
+		5BC49BE7237EC7EC0092DE3E /* RRAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC49BE6237EC7EC0092DE3E /* RRAnalytics.m */; };
 		5BFC9805237BFBFD00717EA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9804237BFBFD00717EA2 /* AppDelegate.m */; };
 		5BFC9808237BFBFD00717EA2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC9807237BFBFD00717EA2 /* SceneDelegate.m */; };
 		5BFC9810237BFBFF00717EA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC980F237BFBFF00717EA2 /* Assets.xcassets */; };
@@ -28,6 +30,10 @@
 /* Begin PBXFileReference section */
 		39BA0550DF50F1BBF7490048 /* libPods-RRAnalytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RRAnalytics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		417AD865947BC22EF752ECED /* Pods-RRAnalytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RRAnalytics.debug.xcconfig"; path = "Target Support Files/Pods-RRAnalytics/Pods-RRAnalytics.debug.xcconfig"; sourceTree = "<group>"; };
+		5BC49BE1237E58D90092DE3E /* UmengAnalytics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UmengAnalytics.json; sourceTree = "<group>"; };
+		5BC49BE4237E597B0092DE3E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5BC49BE5237EC7EC0092DE3E /* RRAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRAnalytics.h; sourceTree = "<group>"; };
+		5BC49BE6237EC7EC0092DE3E /* RRAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRAnalytics.m; sourceTree = "<group>"; };
 		5BFC9800237BFBFD00717EA2 /* RRAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RRAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFC9803237BFBFD00717EA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5BFC9804237BFBFD00717EA2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		5BFC9802237BFBFD00717EA2 /* RRAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				5BC49BE4237E597B0092DE3E /* PrefixHeader.pch */,
 				5BFC981C237BFC0E00717EA2 /* RRAnalytics */,
 				5BFC9803237BFBFD00717EA2 /* AppDelegate.h */,
 				5BFC9804237BFBFD00717EA2 /* AppDelegate.m */,
@@ -125,10 +132,13 @@
 			children = (
 				5BFC981D237BFC2400717EA2 /* RRAnalyticsManager.h */,
 				5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */,
+				5BC49BE5237EC7EC0092DE3E /* RRAnalytics.h */,
+				5BC49BE6237EC7EC0092DE3E /* RRAnalytics.m */,
 				5BFC9832237CE22200717EA2 /* RRAnalytics+Category.h */,
 				5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */,
 				5BFC9826237C002F00717EA2 /* RRAnalyticsHook.h */,
 				5BFC9827237C002F00717EA2 /* RRAnalyticsHook.m */,
+				5BC49BE1237E58D90092DE3E /* UmengAnalytics.json */,
 			);
 			path = RRAnalytics;
 			sourceTree = "<group>";
@@ -209,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC49BE2237E58D90092DE3E /* UmengAnalytics.json in Resources */,
 				5BFC9813237BFBFF00717EA2 /* LaunchScreen.storyboard in Resources */,
 				5BFC9810237BFBFF00717EA2 /* Assets.xcassets in Resources */,
 			);
@@ -263,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC49BE7237EC7EC0092DE3E /* RRAnalytics.m in Sources */,
 				5BFC981F237BFC2400717EA2 /* RRAnalyticsManager.m in Sources */,
 				5BFC9840237D2C1000717EA2 /* GestureViewController.m in Sources */,
 				5BFC9834237CE22200717EA2 /* RRAnalytics+Category.m in Sources */,
@@ -410,7 +422,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83J8888V77;
+				GCC_PREFIX_HEADER = RRAnalytics/PrefixHeader.pch;
 				INFOPLIST_FILE = RRAnalytics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,7 +442,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 83J8888V77;
+				GCC_PREFIX_HEADER = RRAnalytics/PrefixHeader.pch;
 				INFOPLIST_FILE = RRAnalytics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

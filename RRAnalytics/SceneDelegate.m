@@ -17,13 +17,13 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
-//    [UMConfigure initWithAppkey:@"5dcbc6ef4ca357936e0001ce" channel:@"Debug"];
-//
-//    [UMConfigure setLogEnabled:YES];
-//
-//    [MobClick setScenarioType:E_UM_NORMAL];
-//
-//    [UMCommonLogManager setUpUMCommonLogManager];
+    [UMConfigure initWithAppkey:@"5dcbc6ef4ca357936e0001ce" channel:@"App Store"];
+
+    [UMConfigure setLogEnabled:YES];
+
+    [MobClick setScenarioType:E_UM_NORMAL];
+
+    [UMCommonLogManager setUpUMCommonLogManager];
     
      
     UIWindowScene *windowScene = (UIWindowScene *)scene;

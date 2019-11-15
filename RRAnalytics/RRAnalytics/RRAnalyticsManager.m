@@ -11,9 +11,13 @@
 
 @interface RRAnalyticsManager ()
 
-@property (nonatomic, assign) NSString *current;
+@property (nonatomic, strong) NSMutableArray *umeng_lsit;
+@property (nonatomic, strong) NSMutableArray *analytics_list;
 
+@property (nonatomic, assign) NSString *current;
 @property (nonatomic, assign) NSString *parent;
+
+
 
 @end
 
@@ -28,36 +32,15 @@
     return shared;
 }
 
-+ (void)umeng_event:(nonnull NSString *)eventId {
-    [MobClick event:eventId];
-}
 
-+ (void)umeng_event:(nonnull NSString *)eventId label:(NSString *)label {
-    [MobClick event:eventId label:label];
-}
 
-+ (void)umeng_event:(nonnull NSString *)eventId parameters:(NSDictionary *)paramters {
-    [MobClick event:eventId attributes:paramters];
-}
-
-+ (void)umeng_beginEvent:(nonnull NSString *)eventId {
-    [MobClick beginEvent:eventId];
-}
-
-+ (void)umeng_beginEvent:(nonnull NSString *)eventId label:(NSString *)lable {
-    [MobClick beginEvent:eventId label:lable];
-}
-
-+ (void)umeng_endEvent:(nonnull NSString *)eventId {
-    [MobClick endEvent:eventId];
-}
-
-+ (void)umeng_endEvent:(nonnull NSString *)eventId label:(NSString *)label {
-    [MobClick endEvent:eventId label:label];
+- (void)startAnalysising {
+    
+    // 开始hook
 }
 
 
-
+- (void)addUmengEvent:()
 
 
 

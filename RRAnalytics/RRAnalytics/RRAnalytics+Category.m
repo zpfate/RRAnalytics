@@ -133,7 +133,8 @@
 }
 
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
-    
+    [RRAnalyticsManager umeng_event:@"test2" label:@"test2" ];
+
     NSLog(@"事件统计: 手势 -- class:%@, action:%@", ges.className, ges.actionName);
     // 调用原方法
     SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
@@ -206,6 +207,7 @@
 - (void)swizzling_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSLog(@"事件统计: tableView -- class:%@", self.className);
+    [RRAnalyticsManager umeng_event:@"test1" label:@"test1" ];
 
     [self swizzling_tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
@@ -248,7 +250,8 @@
 }
 
 - (void)swizzling_setDelegate:(id<UICollectionViewDelegate>)delegate {
-    
+    [RRAnalyticsManager umeng_event:@"test3" label:@"test3" ];
+
     [self swizzling_setDelegate:delegate];
     
     SEL select = @selector(collectionView:didSelectItemAtIndexPath:);

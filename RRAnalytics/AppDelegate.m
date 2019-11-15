@@ -10,6 +10,7 @@
 
 #import "RRAnalyticsHook.h"
 #import "RRAnalytics+Category.h"
+#import <UMCommon/UMCommon.h>
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-  
+  NSString * deviceID = [UMConfigure deviceIDForIntegration];
+  NSLog(@"集成测试的deviceID:%@", deviceID);
     
 
 
