@@ -20,11 +20,11 @@
         
         SEL appearSelector = @selector(viewWillAppear:);
         SEL swizzling_appearSelector = @selector(swizzling_viewWilAppear:);
-        [RRAnalyticsHook hookClass:self originSelctor:appearSelector targetSelector:swizzling_appearSelector];
+        [RRAnalyticsHook hookClass:self selector:appearSelector swizzlingSelector:swizzling_appearSelector];
         
         SEL disappearSelector = @selector(viewWillDisappear:);
         SEL swizzling_disappearSelector = @selector(swizzling_viewWillDisappear:);
-        [RRAnalyticsHook hookClass:[self class] originSelctor:disappearSelector targetSelector:swizzling_disappearSelector];
+        [RRAnalyticsHook hookClass:[self class] selector:disappearSelector swizzlingSelector:swizzling_disappearSelector];
     });
 }
 
@@ -55,7 +55,7 @@
         
         SEL sendAction = @selector(sendAction:to:forEvent:);
         SEL swizzling_sendAction = @selector(swizzling_sendAction:to:forEvent:);
-        [RRAnalyticsHook hookClass:[self class] originSelctor:sendAction targetSelector:swizzling_sendAction];
+        [RRAnalyticsHook hookClass:[self class] selector:sendAction swizzlingSelector:swizzling_sendAction];
     });
 }
 
@@ -83,7 +83,7 @@
         
         SEL initAction = @selector(initWithTarget:action:);
         SEL swizzlingInitAction = @selector(swizzling_initWithTarget:action:);
-        [RRAnalyticsHook hookClass:[self class] originSelctor:initAction targetSelector:swizzlingInitAction];
+        [RRAnalyticsHook hookClass:[self class] selector:initAction swizzlingSelector:swizzlingInitAction];
     });
 }
 
@@ -124,7 +124,7 @@
     // 给target添加swizzling_selector方法, 实现为swizzling_action
     if (class_addMethod([target class], swizzlingSelector, method_getImplementation(swizzling_actionMethod), method_getTypeEncoding(swizzling_actionMethod))) {
         
-        [RRAnalyticsHook hookClass:[target class] originSelctor:action targetSelector:swizzlingSelector];
+        [RRAnalyticsHook hookClass:[target class] selector:action swizzlingSelector:swizzlingSelector];
     }
     
     self.className = NSStringFromClass([target class]);
@@ -135,12 +135,11 @@
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
     
     NSLog(@"当前Class:%@, 当前Action:%@", ges.className, ges.actionName);
-    
     // 调用原方法
     SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
     if ([self respondsToSelector:swizzling_selector]) {
         IMP imp = [self methodForSelector:swizzling_selector];
-        void (*func)(id, SEL,id) = (void *)imp;
+        void (*func)(id, SEL, id) = (void *)imp;
         func(self, swizzling_selector, ges);
     }
     NSLog(@"%@", NSStringFromClass([self class]));
@@ -151,6 +150,7 @@
 @interface UITableView (RRAnalytics)
 
 @property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *actionName;
 
 @end
 
@@ -163,27 +163,58 @@
         
         SEL delegateSetter = @selector(setDelegate:);
         SEL swizzlingDelegateSetter = @selector(swizzling_setDelegate:);
-        [RRAnalyticsHook hookClass:self originSelctor:delegateSetter targetSelector:swizzlingDelegateSetter];
+        [RRAnalyticsHook hookClass:self selector:delegateSetter swizzlingSelector:swizzlingDelegateSetter];
     });
+}
+
+- (NSString *)className {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setClassName:(NSString *)className {
+    objc_setAssociatedObject(self, @selector(className), className, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)actionName {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setActionName:(NSString *)actionName {
+    objc_setAssociatedObject(self, @selector(actionName), actionName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)swizzling_setDelegate:(id<UITableViewDelegate>)delegate {
     
     [self swizzling_setDelegate:delegate];
     
-    if ([delegate conformsToProtocol:@protocol(UITableViewDelegate)]) {
+    SEL select = @selector(tableView:didSelectRowAtIndexPath:);
+    if ([delegate respondsToSelector:select]) {
         
-        SEL select = @selector(tableView:didSelectRowAtIndexPath:);
-        SEL swizzlingSelect = @selector(swizzling_tableView:didSelectRowAtIndexPath:);
-        [RRAnalyticsHook hookClass:[delegate class] originSelctor:select targetSelector:swizzlingSelect];
+        // 在delegate中创建swizzling_tableView...方法
+        SEL swizzling_Select = @selector(swizzling_tableView:didSelectRowAtIndexPath:);
+        Method swizzling_method = class_getInstanceMethod([self class], swizzling_Select);
+        Method method = class_getInstanceMethod([delegate class], select);
+        if (class_addMethod([delegate class], swizzling_Select, method_getImplementation(swizzling_method), method_getTypeEncoding(swizzling_method))) {
+            method_exchangeImplementations(method, class_getInstanceMethod([delegate class], swizzling_Select));
+        }
+        
+        self.className = NSStringFromClass([delegate class]);
+        self.actionName = @"didSelectTableView";
     }
 }
 
 - (void)swizzling_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self swizzling_tableView:tableView didSelectRowAtIndexPath:indexPath];
     NSLog(@"tableView点击: %@", NSStringFromClass([tableView.delegate class]));
+
+    [self swizzling_tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
+
+@end
+
+@interface UICollectionView (RRAnalytics)
+
+@property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *actionName;
 
 @end
 
@@ -195,18 +226,44 @@
         
         SEL delegateSetter = @selector(setDelegate:);
         SEL swizzlingDelegateSetter = @selector(swizzling_setDelegate:);
-        [RRAnalyticsHook hookClass:self originSelctor:delegateSetter targetSelector:swizzlingDelegateSetter];
+        [RRAnalyticsHook hookClass:self selector:delegateSetter swizzlingSelector:swizzlingDelegateSetter];
     });
+}
+
+- (NSString *)className {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setClassName:(NSString *)className {
+    objc_setAssociatedObject(self, @selector(className), className, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)actionName {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setActionName:(NSString *)actionName {
+    objc_setAssociatedObject(self, @selector(actionName), actionName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)swizzling_setDelegate:(id<UICollectionViewDelegate>)delegate {
     
     [self swizzling_setDelegate:delegate];
-    if ([delegate conformsToProtocol:@protocol(UICollectionViewDelegate)]) {
-        SEL select = @selector(collectionView:didSelectItemAtIndexPath:);
-        SEL swizzlingSelect = @selector(swizzling_collectionView:didSelectItemAtIndex:);
-        [RRAnalyticsHook hookClass:[delegate class] originSelctor:select targetSelector:swizzlingSelect];
+    
+    SEL select = @selector(collectionView:didSelectItemAtIndexPath:);
+
+      if ([delegate respondsToSelector:select]) {
         
+        // 在delegate中创建swizzling_collectionView:didSelect...方法
+        SEL swizzling_Select = @selector(swizzling_collectionView:didSelectItemAtIndex:);
+        Method swizzling_method = class_getInstanceMethod([self class], swizzling_Select);
+        Method method = class_getInstanceMethod([delegate class], select);
+        if (class_addMethod([delegate class], swizzling_Select, method_getImplementation(swizzling_method), method_getTypeEncoding(swizzling_method))) {
+            method_exchangeImplementations(method, class_getInstanceMethod([delegate class], swizzling_Select));
+        }
+    
+        self.className = NSStringFromClass([delegate class]);
+        self.actionName = @"didSelectCollectionView";
     }
 }
 

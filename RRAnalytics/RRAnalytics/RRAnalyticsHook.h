@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)isClassOfSystem:(id)cls;
 
-+ (void)hookClass:(Class)cls originSelctor:(SEL)originSelector targetSelector:(SEL)swizzlingSelector;
++ (void)hookClass:(Class)cls selector:(SEL)selector swizzlingSelector:(SEL)swizzlingSelector;
 
 
 @end
