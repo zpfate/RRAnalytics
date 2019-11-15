@@ -17,7 +17,6 @@
 
 @end
 
-
 @implementation RRAnalyticsManager
 
 + (instancetype)shared {

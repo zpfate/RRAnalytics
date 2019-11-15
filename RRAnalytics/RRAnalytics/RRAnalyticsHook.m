@@ -1,9 +1,10 @@
 //
-//  RRAnalyticsHook.m
-//  RRAnalytics
+//
+//  RRAnalyticsManager.m
+//  RoadRescue
 //
 //  Created by Twisted Fate on 2019/11/13.
-//  Copyright © 2019 Twisted Fate. All rights reserved.
+//  Copyright © 2019 Zhilun (Hangzhou) Technology Co., Ltd. All rights reserved.
 //
 
 #import "RRAnalyticsHook.h"
