@@ -134,7 +134,7 @@
 
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
     
-    NSLog(@"事件统计: 手势 -- class:%@, action:%@", self.className, self.actionName);
+    NSLog(@"事件统计: 手势 -- class:%@, action:%@", ges.className, ges.actionName);
     // 调用原方法
     SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
     if ([self respondsToSelector:swizzling_selector]) {
