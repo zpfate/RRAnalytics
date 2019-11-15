@@ -11,10 +11,11 @@
 #import "RRAnalyticsHook.h"
 #import <objc/runtime.h>
 
+
 @implementation UIViewController (RRAnalytics)
 
 + (void)load {
-    
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -34,14 +35,13 @@
     
     // 调用原方法
     [self swizzling_viewWilAppear:animated];
-    NSLog(@"VC出现:%@", NSStringFromClass([self class]));
+    NSLog(@"事件统计: %@ appear", NSStringFromClass([self class]));
 }
 
-//
 - (void)swizzling_viewWillDisappear:(BOOL)animated {
     
     [self swizzling_viewWillDisappear:animated];
-    NSLog(@"VC消失:%@", NSStringFromClass([self class]));
+    NSLog(@"事件统计: %@ disappear", NSStringFromClass([self class]));
 }
 
 @end
@@ -62,7 +62,7 @@
 - (void)swizzling_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
     
     [self swizzling_sendAction:action to:target forEvent:event];
-    NSLog(@"当前Class:%@, 当前Action:%@", NSStringFromClass([target class]), NSStringFromSelector(action));
+    NSLog(@"事件统计: 按钮 -- class:%@, action:%@", NSStringFromClass([target class]), NSStringFromSelector(action));
 }
 
 @end
@@ -134,7 +134,7 @@
 
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
     
-    NSLog(@"当前Class:%@, 当前Action:%@", ges.className, ges.actionName);
+    NSLog(@"事件统计: 手势 -- class:%@, action:%@", self.className, self.actionName);
     // 调用原方法
     SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
     if ([self respondsToSelector:swizzling_selector]) {
@@ -142,7 +142,6 @@
         void (*func)(id, SEL, id) = (void *)imp;
         func(self, swizzling_selector, ges);
     }
-    NSLog(@"%@", NSStringFromClass([self class]));
 }
 
 @end
@@ -195,6 +194,7 @@
         Method swizzling_method = class_getInstanceMethod([self class], swizzling_Select);
         Method method = class_getInstanceMethod([delegate class], select);
         if (class_addMethod([delegate class], swizzling_Select, method_getImplementation(swizzling_method), method_getTypeEncoding(swizzling_method))) {
+            // 已经添加直接交换实现
             method_exchangeImplementations(method, class_getInstanceMethod([delegate class], swizzling_Select));
         }
         
@@ -204,7 +204,8 @@
 }
 
 - (void)swizzling_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"tableView点击: %@", NSStringFromClass([tableView.delegate class]));
+
+    NSLog(@"事件统计: tableView -- class:%@", self.className);
 
     [self swizzling_tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
@@ -269,8 +270,8 @@
 
 - (void)swizzling_collectionView:(UICollectionView *)collectionView didSelectItemAtIndex:(NSIndexPath *)indexPath {
     
+    NSLog(@"事件统计: collectionView -- class:%@", self.className);
     [self swizzling_collectionView:collectionView didSelectItemAtIndex:indexPath];
-    NSLog(@"collectionView点击: %@", NSStringFromClass([collectionView.delegate class]));
 }
 
 @end

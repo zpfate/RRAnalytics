@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+
     UIButton *buttonName = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonName.backgroundColor = [UIColor greenColor];
     buttonName.frame = CGRectMake(100, 100, 100, 60);
@@ -37,13 +38,13 @@
 
 - (void)buttonName:(UIButton *)sender {
     
-    NSLog(@"click------------ buttonName");
+    NSLog(@"click button ------------ buttonName");
 }
 
 
 - (void)newBtn:(UIButton *)sender {
     
-    NSLog(@"click------------ newBtn");
+    NSLog(@"click button ------------ newBtn");
 }
 
 @end

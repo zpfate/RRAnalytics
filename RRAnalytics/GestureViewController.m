@@ -22,11 +22,10 @@ static int i = 0;
 
     i = 0;
     [self initGestureView];
-
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)initGestureView {
-    
     
     if (i > 3) {
         return;
@@ -45,18 +44,18 @@ static int i = 0;
 }
 
 - (void)gesture0:(UIGestureRecognizer *)ges {
-    NSLog(@"手势点击0");
+    NSLog(@"gesture tap 0");
 }
 
 - (void)gesture1:(UIGestureRecognizer *)ges {
-    NSLog(@"手势点击1");
+    NSLog(@"gesture tap 1");
 }
 
 - (void)gesture2:(UIGestureRecognizer *)ges {
-    NSLog(@"手势点击2");
+    NSLog(@"gesture tap 2");
 }
 
 - (void)gesture3:(UIGestureRecognizer *)ges {
-    NSLog(@"手势点击3");
+    NSLog(@"gesture tap 3");
 }
 @end

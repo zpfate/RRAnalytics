@@ -78,7 +78,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
  
-    NSLog(@"collectionView点击");
+    NSLog(@"section == %zd, row == %zd", indexPath.section, indexPath.row);
 }
 
 #pragma mark <UICollectionViewDelegate>

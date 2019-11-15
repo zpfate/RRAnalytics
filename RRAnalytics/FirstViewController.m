@@ -58,8 +58,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
     
-    NSLog(@"tableView didSelect");
-    
+    NSLog(@"section == %zd, row == %zd", indexPath.section, indexPath.row);
+
     switch (indexPath.row) {
         case 0:
             [self.navigationController pushViewController:[ButtonViewController new] animated:YES];
