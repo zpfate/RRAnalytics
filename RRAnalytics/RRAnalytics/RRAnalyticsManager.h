@@ -14,7 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)startAnalytics;
+- (void)analyticsStart;
+
+
+- (void)clickEvent:(NSString *)eventId;
+- (void)clickEvent:(NSString *)eventId desc:(NSString *)desc;
+
+- (void)clickEvent:(NSString *)eventId paramters:(NSDictionary *)paramters;
+
+- (void)beginPageView:(NSString *)eventId;
+- (void)endPageView:(NSString *)eventId;
+
 
 @end
 

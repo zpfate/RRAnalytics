@@ -10,7 +10,7 @@
 #import <UMAnalytics/MobClick.h>
 #import "RRAnalyticsHook.h"
 #import <objc/runtime.h>
-
+#import "RRAnalytics.h"
 
 @implementation UIViewController (RRAnalytics)
 
@@ -32,6 +32,7 @@
 - (void)swizzling_viewWilAppear:(BOOL)animated {
     
     // 插入代码
+    [[RRAnalyticsManager shared] beginPageView:[NSString stringWithFormat:@"%@_appear", NSStringFromClass([self class])]];
     
     // 调用原方法
     [self swizzling_viewWilAppear:animated];
@@ -40,6 +41,8 @@
 
 - (void)swizzling_viewWillDisappear:(BOOL)animated {
     
+    [[RRAnalyticsManager shared] endPageView:[NSString stringWithFormat:@"%@_disappear", NSStringFromClass([self class])]];
+
     [self swizzling_viewWillDisappear:animated];
     NSLog(@"事件统计: %@ disappear", NSStringFromClass([self class]));
 }
@@ -60,6 +63,10 @@
 }
 
 - (void)swizzling_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
+    
+    NSString *eventId = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([target class]), NSStringFromSelector(action)];
+    [[RRAnalyticsManager shared] clickEvent:eventId];
+    
     
     [self swizzling_sendAction:action to:target forEvent:event];
     NSLog(@"事件统计: 按钮 -- class:%@, action:%@", NSStringFromClass([target class]), NSStringFromSelector(action));
@@ -82,8 +89,8 @@
     dispatch_once(&onceToken, ^{
         
         SEL initAction = @selector(initWithTarget:action:);
-        SEL swizzlingInitAction = @selector(swizzling_initWithTarget:action:);
-        [RRAnalyticsHook hookClass:[self class] selector:initAction swizzlingSelector:swizzlingInitAction];
+        SEL swizzling_initAction = @selector(swizzling_initWithTarget:action:);
+        [RRAnalyticsHook hookClass:[self class] selector:initAction swizzlingSelector:swizzling_initAction];
     });
 }
 
@@ -133,9 +140,12 @@
 }
 
 - (void)swizzling_action:(UIGestureRecognizer *)ges {
-    [RRAnalyticsManager umeng_event:@"test2" label:@"test2" ];
 
     NSLog(@"事件统计: 手势 -- class:%@, action:%@", ges.className, ges.actionName);
+    NSString *eventId = [NSString stringWithFormat:@"%@_%@", ges.className, ges.actionName];
+    [[RRAnalyticsManager shared] clickEvent:eventId];
+    
+    
     // 调用原方法
     SEL swizzling_selector = NSSelectorFromString([NSString stringWithFormat:@"swizzling_%@", ges.actionName]);
     if ([self respondsToSelector:swizzling_selector]) {
@@ -150,7 +160,6 @@
 @interface UITableView (RRAnalytics)
 
 @property (nonatomic, copy) NSString *className;
-@property (nonatomic, copy) NSString *actionName;
 
 @end
 
@@ -200,15 +209,14 @@
         }
         
         self.className = NSStringFromClass([delegate class]);
-        self.actionName = @"didSelectTableView";
     }
 }
 
 - (void)swizzling_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSLog(@"事件统计: tableView -- class:%@", self.className);
-    [RRAnalyticsManager umeng_event:@"test1" label:@"test1" ];
-
+    NSString *eventId = [NSString stringWithFormat:@"%@_selectTableView", tableView.className];
+    [[RRAnalyticsManager shared] clickEvent:eventId];
     [self swizzling_tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -250,7 +258,6 @@
 }
 
 - (void)swizzling_setDelegate:(id<UICollectionViewDelegate>)delegate {
-    [RRAnalyticsManager umeng_event:@"test3" label:@"test3" ];
 
     [self swizzling_setDelegate:delegate];
     
@@ -273,6 +280,8 @@
 
 - (void)swizzling_collectionView:(UICollectionView *)collectionView didSelectItemAtIndex:(NSIndexPath *)indexPath {
     
+    NSString *eventId = [NSString stringWithFormat:@"%@_selectCollectionView", collectionView.className];
+    [[RRAnalyticsManager shared] clickEvent:eventId];
     NSLog(@"事件统计: collectionView -- class:%@", self.className);
     [self swizzling_collectionView:collectionView didSelectItemAtIndex:indexPath];
 }

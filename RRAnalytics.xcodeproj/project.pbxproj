@@ -130,14 +130,14 @@
 		5BFC981C237BFC0E00717EA2 /* RRAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				5BFC981D237BFC2400717EA2 /* RRAnalyticsManager.h */,
-				5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */,
 				5BC49BE5237EC7EC0092DE3E /* RRAnalytics.h */,
 				5BC49BE6237EC7EC0092DE3E /* RRAnalytics.m */,
-				5BFC9832237CE22200717EA2 /* RRAnalytics+Category.h */,
-				5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */,
 				5BFC9826237C002F00717EA2 /* RRAnalyticsHook.h */,
 				5BFC9827237C002F00717EA2 /* RRAnalyticsHook.m */,
+				5BFC981D237BFC2400717EA2 /* RRAnalyticsManager.h */,
+				5BFC981E237BFC2400717EA2 /* RRAnalyticsManager.m */,
+				5BFC9832237CE22200717EA2 /* RRAnalytics+Category.h */,
+				5BFC9833237CE22200717EA2 /* RRAnalytics+Category.m */,
 				5BC49BE1237E58D90092DE3E /* UmengAnalytics.json */,
 			);
 			path = RRAnalytics;

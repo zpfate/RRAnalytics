@@ -37,7 +37,7 @@
     self.window.rootViewController = naVC;
     
     
-    
+    [[RRAnalyticsManager shared] analyticsStart];
 }
 
 

@@ -21,22 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-  NSString * deviceID = [UMConfigure deviceIDForIntegration];
-  NSLog(@"集成测试的deviceID:%@", deviceID);
+    NSString * deviceID = [UMConfigure deviceIDForIntegration];
+    NSLog(@"集成测试的deviceID:%@", deviceID);
     
 
-
+    
     
     return YES;
-}
-
-
-- (void)sendAction:(NSString *)name {
-    
-}
-
-- (void)send {
-    
 }
 
 #pragma mark - UISceneSession lifecycle
