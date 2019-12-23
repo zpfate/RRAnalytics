@@ -1,0 +1,27 @@
+域名或ip /point/log     示例：10.1.80.166:7004/point/log
+
+POST请求   Content-Type : application/json
+
+请求参数：
+{"visitTime":"访问时间戳，精确到毫秒，20190601121212123",
+"staySecond":"停留时间，单位秒",
+"latitude":"纬度","longitude":"经度",
+"wxid":"微信id",
+"uuid":"手机唯一标识",
+"userId":"用户ID",
+"title":"页面标题",
+"url":"页面路径",
+"domain":"域名",
+"visitIp":"访问IP",
+"userAgent":"浏览客户端",
+"parentUrl":"",
+"referUrl":"",
+"osSystem":"操作系统",
+"ppi":"分辨率",
+"appName":"app名称",
+"pageType":"日志记录的类型(页面page 或 button按钮)",
+"extInfo":"扩展字段，其他参数以json格式存放",
+"buttonName":"按钮名称",
+"source":"渠道来源"}
+
+	

@@ -40,6 +40,7 @@
     
     NSLog(@"click button ------------ buttonName");
 
+    [RRAnalyticsUtil deleteFile];
 }
 
 

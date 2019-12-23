@@ -12,7 +12,7 @@
 #import "TableViewController.h"
 #import "CollectionViewController.h"
 #import "ListViewController.h"
-
+#import "RRAnalyticsUtil.h"
 
 @interface FirstViewController ()
 
@@ -30,6 +30,28 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    NSDictionary *d1 = @{
+        @"name": @"zzz",
+        @"age" : @12,
+        @"sex" : @"amle"
+    };
+    
+    NSDictionary *d2 = @{
+        @"name": @"aaa",
+        @"age" : @13,
+        @"sex" : @"amle"
+    };
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr addObject:d1];
+    [arr addObject:d2];
+    
+    [RRAnalyticsUtil createFileWithList:arr completionHandle:^(BOOL result) {
+       
+        
+    }];
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.backgroundColor = [UIColor redColor];
